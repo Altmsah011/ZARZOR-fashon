@@ -1,0 +1,1280 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>ZARZOR | أزياء رجالية</title>
+  <style>
+    :root {
+      --gold: #b8860b;
+      --bg: #0a0a0a;
+      --muted: #d9d9d9;
+      --card: #111111;
+      --accent: #efefef;
+      --glass: rgba(255,255,255,0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Tahoma, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--accent);
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 12px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #161616;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .brand img {
+      height: 50px;
+      width: auto;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .brand .title {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .brand .small {
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    nav {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    /* hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .hero-content {
+      order: 2;
+      width: 100%;
+    }
+
+    .hero-img {
+      order: 1;
+      background: var(--card);
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .hero-img img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .hero h2 {
+      font-size: 24px;
+      margin: 0 0 10px 0;
+      color: var(--gold);
+      line-height: 1.3;
+    }
+
+    .hero p {
+      color: #cfcfcf;
+      margin: 10px 0;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    /* products */
+    .section-title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 20px 0;
+      gap: 8px;
+    }
+
+    .section-title h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+
+    .card .img {
+      width: 100%;
+      height: 200px;
+    }
+
+    .card .img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .card .info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 18px;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .price {
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .meta {
+      color: #bfbfbf;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .row-actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #081010;
+      flex: 1;
+    }
+
+    .btn-primary:hover, .btn-primary:active {
+      background: #d4a017;
+    }
+
+    .btn-outline {
+      border: 1px solid #262626;
+      color: var(--accent);
+      background: transparent;
+      flex: 1;
+    }
+
+    .btn-outline:hover, .btn-outline:active {
+      background: rgba(255,255,255,0.05);
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 15px 0;
+      border-top: 1px solid #161616;
+      color: #bdbdbd;
+      text-align: center;
+    }
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .whatsapp {
+      background: #25d366;
+      padding: 12px 16px;
+      border-radius: 8px;
+      color: #042a1f;
+      font-weight: 800;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 15px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .whatsapp:hover, .whatsapp:active {
+      background: #128c7e;
+    }
+
+    /* admin modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 10px;
+      z-index: 10000;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .panel {
+      background: #0f0f0f;
+      padding: 15px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      color: var(--accent);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      margin: auto;
+      border: 1px solid #222;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-size: 14px;
+      color: #cfcfcf;
+      margin-bottom: 6px;
+    }
+
+    input[type=text], textarea, select, input[type=file] {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #222;
+      background: #080808;
+      color: var(--accent);
+      font-size: 16px;
+      min-height: 44px;
+      width: 100%;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .small {
+      font-size: 12px;
+      color: #bfbfbf;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: #151515;
+      border: 1px solid #222;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 13px;
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chip:hover, .chip:active {
+      background: #1a1a1a;
+    }
+
+    #productsList {
+      max-height: 200px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .product-item {
+      border-top: 1px solid #222;
+      padding: 10px 0;
+    }
+
+    .product-item:first-child {
+      border-top: none;
+    }
+
+    .edit-mode {
+      background: rgba(184,134,11,0.1);
+      border-radius: 6px;
+      padding: 8px;
+    }
+
+    .image-preview {
+      max-width: 150px;
+      max-height: 120px;
+      border-radius: 6px;
+      margin-top: 8px;
+      display: none;
+    }
+
+    .file-input-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .file-input-wrapper input[type=file] {
+      width: 100%;
+      padding: 12px;
+      border: 1px dashed #444;
+      border-radius: 6px;
+      min-height: 44px;
+    }
+
+    .logo-preview {
+      max-width: 80px;
+      max-height: 80px;
+      border-radius: 6px;
+      margin-top: 8px;
+      display: none;
+    }
+
+    .logo-section {
+      border-bottom: 1px solid #222;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+
+    .hidden-admin {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--gold);
+      color: #000;
+      padding: 16px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 9999;
+      opacity: 0.8;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+    }
+
+    .hidden-admin:hover, .hidden-admin:active {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    /* تحسينات للشاشات الكبيرة */
+    @media (min-width: 768px) {
+      .container {
+        padding: 18px;
+      }
+      
+      .hero {
+        flex-direction: row;
+        text-align: right;
+      }
+      
+      .hero-content {
+        order: 1;
+        flex: 1;
+      }
+      
+      .hero-img {
+        order: 2;
+        flex: 0 0 300px;
+        max-width: 300px;
+      }
+      
+      .card {
+        flex-direction: row;
+      }
+      
+      .card .img {
+        flex: 0 0 200px;
+        max-width: 200px;
+        height: 180px;
+      }
+      
+      nav a {
+        font-size: 15px;
+        padding: 8px 12px;
+      }
+      
+      .hero h2 {
+        font-size: 28px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-img {
+        flex: 0 0 400px;
+        max-width: 400px;
+      }
+      
+      .hero-img img {
+        max-height: 320px;
+      }
+      
+      .card .img {
+        flex: 0 0 250px;
+        max-width: 250px;
+        height: 200px;
+      }
+    }
+
+    /* تحسينات للأجهزة ذات الشاشات الصغيرة جداً */
+    @media (max-width: 360px) {
+      .container {
+        padding: 8px;
+      }
+      
+      .brand img {
+        height: 45px;
+      }
+      
+      .brand .title {
+        font-size: 16px;
+      }
+      
+      .hero h2 {
+        font-size: 22px;
+      }
+      
+      nav {
+        gap: 4px;
+      }
+      
+      nav a {
+        padding: 5px 8px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <!-- اللوجو الجديد في الأعلى -->
+        <img src="https://i.ibb.co/60TgY658/zarzor-logo.png" alt="ZARZOR Logo" id="logoImg">
+        <div>
+          <div class="small">أزياء رجالية • ستايل عصري</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#shop">المنتجات</a>
+        <a href="#about">عن ZARZOR</a>
+        <a href="#contact">اتصل بنا</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h2>ZARZOR — أسلوب الرجل العصري</h2>
+          <p>اكتشف مجموعتنا الحصرية من الملابس الرجالية المصممة بأناقة وعصرية. جودة عالية وتصميمات تعكس شخصيتك المميزة.</p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#shop">تسوق الآن</a>
+            <a class="btn btn-outline" href="#contact">اطلب الآن</a>
+          </div>
+        </div>
+        <div class="hero-img">
+          <!-- نفس اللوجو لكن بحجم أكبر -->
+          <img src="https://i.ibb.co/60TgY658/zarzor-logo.png" alt="ZARZOR Logo" id="heroImg">
+        </div>
+      </section>
+
+      <div class="section-title" id="shop">
+        <h3>منتجاتنا</h3>
+        <div class="small">اختر من مجموعة منتجاتنا المميزة - اضغط على طلب للتواصل عبر واتساب</div>
+      </div>
+
+      <div id="productsGrid" class="grid">
+        <!-- منتجات هتتحط هنا ديناميكيًا -->
+      </div>
+
+      <section id="about" style="margin-top:25px">
+        <div class="section-title"><h3>عن ZARZOR</h3></div>
+        <p class="hint">ZARZOR علامة تجارية مصرية تقدم أحدث صيحات الموضة الرجالية. نركز على الجودة، الراحة، والتصميمات العصرية التي تناسب الرجل المتميز.</p>
+      </section>
+
+      <section id="contact" style="margin-top:25px">
+        <div class="section-title"><h3>تواصل معنا</h3></div>
+        <div class="contact">
+          <div>
+            <p class="small">للطلبات والاستفسارات:</p>
+            <div style="margin-top:10px">
+              <a id="waLink" class="whatsapp" href="#" target="_blank">
+                تواصل عبر واتساب — 01151328273
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>© ZARZOR — جميع الحقوق محفوظة</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- زر Admin مخفي في الزاوية -->
+  <div class="hidden-admin" id="hiddenAdminBtn">⚙️</div>
+
+  <!-- ADMIN MODAL -->
+  <div class="modal" id="adminModal">
+    <div class="panel">
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:10px">
+        <strong style="text-align:center">لوحة إدارة المتجر — ZARZOR</strong>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center">
+          <span class="chip" id="exportBtn">حفظ البيانات</span>
+          <label class="chip" style="cursor:pointer">استيراد بيانات 
+            <input type="file" id="importFile" accept=".json" style="display:none">
+          </label>
+          <span class="chip" id="clearBtn">مسح الكل</span>
+          <button class="btn btn-outline" id="closeAdmin" style="min-height:36px;padding:8px 12px;">إغلاق</button>
+        </div>
+      </div>
+
+      <div id="adminArea">
+        <!-- قسم إدارة اللوجو -->
+        <div class="logo-section">
+          <div class="hint">إدارة شعار الموقع</div>
+          <div style="margin-top:10px">
+            <div class="field">
+              <label>شعار الموقع (اختر من جهازك)</label>
+              <div class="file-input-wrapper">
+                <input type="file" id="logoUpload" accept="image/*">
+              </div>
+              <img id="logoPreview" class="logo-preview" alt="معاينة الشعار">
+            </div>
+            <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+              <button class="btn btn-primary" id="saveLogo" style="flex:1;min-height:40px;">حفظ الشعار</button>
+              <button class="btn btn-outline" id="resetLogo" style="flex:1;min-height:40px;">استعادة الافتراضي</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hint" style="text-align:center;margin:10px 0;">إضافة منتج جديد — سيتم الحفظ تلقائياً</div>
+
+        <div style="margin-top:10px">
+          <div class="field">
+            <label>اسم المنتج</label>
+            <input type="text" id="pName" placeholder="مثال: تيشيرت ZARZOR - أسود">
+          </div>
+          <div class="field">
+            <label>السعر (ج.م)</label>
+            <input type="text" id="pPrice" placeholder="مثال: 450">
+          </div>
+          <div class="field">
+            <label>صورة المنتج</label>
+            <div class="file-input-wrapper">
+              <input type="file" id="pImg" accept="image/*">
+            </div>
+            <img id="imagePreview" class="image-preview" alt="معاينة الصورة">
+          </div>
+          <div class="field">
+            <label>المقاسات المتاحة</label>
+            <input type="text" id="pSizes" placeholder="مثال: S,M,L,XL">
+          </div>
+          <div class="field">
+            <label>الألوان المتاحة</label>
+            <input type="text" id="pColors" placeholder="مثال: أسود, رمادي, أبيض">
+          </div>
+
+          <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+            <button class="btn btn-primary" id="addProduct" style="flex:2;">إضافة المنتج</button>
+            <button class="btn btn-outline" id="cancelEdit" style="display:none;flex:1;">إلغاء التعديل</button>
+            <button class="btn btn-outline" id="showProducts" style="flex:1;">عرض المنتجات</button>
+          </div>
+        </div>
+
+        <hr style="margin:15px 0;border-color:#222">
+
+        <div id="productsList"></div>
+      </div>
+
+      <div style="margin-top:10px;color:#9a9a9a;font-size:12px;text-align:center">لإغلاق النافذة: اضغط إغلاق أو خارج النافذة</div>
+    </div>
+  </div>
+
+  <script>
+    // CONFIG
+    const WHATSAPP_NUMBER = '201151328273'; // تم إصلاح الرقم - يجب أن يبدأ بـ 20 لمصر
+    const ADMIN_PASS = 'zarzor123';
+    const STORAGE_KEY = 'zarzor_products_v1';
+    const LOGO_STORAGE_KEY = 'zarzor_logo_v1';
+    const DEFAULT_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMTExIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2I4ODYwYiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPtin2YTYqtipINin2YTYp9mGPC90ZXh0Pjwvc3ZnPg==';
+    const DEFAULT_LOGO = 'https://i.ibb.co/60TgY658/zarzor-logo.png';
+
+    // helpers
+    const $ = s => document.querySelector(s);
+    const $$ = s => document.querySelectorAll(s);
+
+    // تحسين جودة الصورة - إضافة نسخة عالية الجودة إذا أمكن
+    function getHighQualityLogo() {
+      return 'https://i.ibb.co/60TgY658/zarzor-logo.png';
+    }
+
+    // set wa link - تم إصلاح الرابط
+    const waLink = $('#waLink');
+    if (waLink) {
+      waLink.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+    }
+
+    // إدارة اللوجو - نسخة محسنة
+    function loadLogo() {
+      try {
+        const savedLogo = localStorage.getItem(LOGO_STORAGE_KEY);
+        if (savedLogo && (savedLogo.startsWith('data:image') || savedLogo.startsWith('http'))) {
+          return savedLogo;
+        }
+        return getHighQualityLogo();
+      } catch(e) {
+        console.error('Error loading logo:', e);
+        return getHighQualityLogo();
+      }
+    }
+
+    function saveLogo(logoData) {
+      try {
+        if (logoData && (logoData.startsWith('data:image') || logoData.startsWith('http'))) {
+          localStorage.setItem(LOGO_STORAGE_KEY, logoData);
+          return true;
+        }
+        return false;
+      } catch(e) {
+        console.error('Error saving logo:', e);
+        alert('حدث خطأ في حفظ الشعار. جرب صورة أصغر.');
+        return false;
+      }
+    }
+
+    function renderLogo() {
+      const logoImg = $('#logoImg');
+      const heroLogo = $('#heroImg');
+      const logoData = loadLogo();
+      
+      if (logoImg) {
+        logoImg.src = logoData;
+        logoImg.onerror = function() {
+          this.src = getHighQualityLogo();
+        };
+      }
+      
+      if (heroLogo) {
+        heroLogo.src = logoData;
+        heroLogo.onerror = function() {
+          this.src = getHighQualityLogo();
+        };
+      }
+    }
+
+    // products management - نسخة محسنة
+    function loadProducts() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const products = JSON.parse(raw);
+          if (Array.isArray(products)) {
+            return products.map(p => ({
+              name: p.name || 'منتج بدون اسم',
+              price: p.price || '0',
+              img: p.img || DEFAULT_IMAGE,
+              sizes: Array.isArray(p.sizes) ? p.sizes : [],
+              colors: Array.isArray(p.colors) ? p.colors : []
+            }));
+          }
+        }
+        return [];
+      } catch(e) {
+        console.error('Error loading products:', e);
+        return [];
+      }
+    }
+
+    function saveProducts(arr) {
+      try {
+        const validProducts = arr.filter(p => 
+          p && 
+          typeof p.name === 'string' && 
+          typeof p.price === 'string' &&
+          Array.isArray(p.sizes) &&
+          Array.isArray(p.colors)
+        );
+        
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(validProducts));
+        console.log('تم حفظ المنتجات بنجاح:', validProducts.length, 'منتج');
+        return true;
+      } catch(e) {
+        console.error('Error saving products:', e);
+        alert('حدث خطأ في حفظ المنتجات. جرب مرة أخرى.');
+        return false;
+      }
+    }
+
+    function renderGrid() {
+      const grid = $('#productsGrid');
+      const list = loadProducts();
+      
+      if(list.length === 0) {
+        grid.innerHTML = '<div style="color:#bdbdbd;padding:20px;background:#0f0f0f;border-radius:10px;text-align:center;margin:10px 0">لا توجد منتجات حالياً<br><small style="font-size:12px">اضغط على زر الإدارة في الأسفل لإضافة منتجات</small></div>';
+        return;
+      }
+
+      grid.innerHTML = '';
+      list.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        
+        const message = `السلام عليكم، أود طلب ${p.name} — من فضلكم ارسلوا تفاصيل المقاسات والتوافر`;
+        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        
+        div.innerHTML = `
+          <div class="img">
+            <img src="${p.img}" alt="${p.name}" onerror="this.src='${DEFAULT_IMAGE}'">
+          </div>
+          <div class="info">
+            <h3>${p.name}</h3>
+            <div class="price">${p.price} ج.م</div>
+            <div class="meta">المقاسات: ${p.sizes.join(', ') || 'غير محدد'} • الألوان: ${p.colors.join(', ') || 'غير محدد'}</div>
+            <div class="row-actions">
+              <a class="btn btn-primary" href="${whatsappUrl}" target="_blank">اطلب الآن</a>
+            </div>
+          </div>
+        `;
+        
+        grid.appendChild(div);
+      });
+    }
+
+    // admin modal logic
+    const modal = $('#adminModal');
+    const hiddenAdminBtn = $('#hiddenAdminBtn');
+    const closeAdmin = $('#closeAdmin');
+    const addBtn = $('#addProduct');
+    const cancelEditBtn = $('#cancelEdit');
+    const productsList = $('#productsList');
+    const exportBtn = $('#exportBtn');
+    const importFile = $('#importFile');
+    const clearBtn = $('#clearBtn');
+    const showProductsBtn = $('#showProducts');
+    const imageInput = $('#pImg');
+    const imagePreview = $('#imagePreview');
+    const logoUpload = $('#logoUpload');
+    const logoPreview = $('#logoPreview');
+    const saveLogoBtn = $('#saveLogo');
+    const resetLogoBtn = $('#resetLogo');
+
+    // متغيرات لتتبع حالة التعديل
+    let editMode = false;
+    let currentEditIndex = -1;
+    let currentImageData = DEFAULT_IMAGE;
+    let currentLogoData = '';
+
+    // زر Admin المخفي - تم إصلاح المشكلة
+    if (hiddenAdminBtn) {
+      hiddenAdminBtn.addEventListener('click', handleAdminClick);
+      
+      // إضافة دعم للشاشات التي تعمل باللمس
+      hiddenAdminBtn.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        handleAdminClick(e);
+      });
+    }
+
+    function handleAdminClick(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const pass = prompt('كلمة المرور للإدارة:');
+      if(pass !== ADMIN_PASS) {
+        alert('كلمة المرور غير صحيحة');
+        return;
+      }
+      if (modal) {
+        modal.classList.add('open');
+        renderAdminList();
+      }
+    }
+
+    // معاينة الصورة عند اختيارها - نسخة محسنة
+    if (imageInput) {
+      imageInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          if (file.size > 2 * 1024 * 1024) {
+            alert('حجم الصورة كبير جداً. يرجى اختيار صورة أقل من 2MB');
+            return;
+          }
+          
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block';
+            currentImageData = e.target.result;
+          };
+          reader.onerror = function() {
+            alert('خطأ في تحميل الصورة. جرب صورة أخرى.');
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    // معاينة اللوجو عند اختياره - نسخة محسنة
+    if (logoUpload) {
+      logoUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          if (file.size > 1 * 1024 * 1024) {
+            alert('حجم الشعار كبير جداً. يرجى اختيار صورة أقل من 1MB');
+            return;
+          }
+          
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            logoPreview.src = e.target.result;
+            logoPreview.style.display = 'block';
+            currentLogoData = e.target.result;
+          };
+          reader.onerror = function() {
+            alert('خطأ في تحميل الشعار. جرب صورة أخرى.');
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    // حفظ اللوجو - نسخة محسنة
+    if (saveLogoBtn) {
+      saveLogoBtn.addEventListener('click', function() {
+        if (currentLogoData) {
+          if (saveLogo(currentLogoData)) {
+            renderLogo();
+            alert('تم حفظ الشعار بنجاح ✓');
+            logoPreview.style.display = 'none';
+            logoUpload.value = '';
+            currentLogoData = '';
+          }
+        } else {
+          alert('يرجى اختيار شعار أولاً');
+        }
+      });
+    }
+
+    // إعادة تعيين اللوجو
+    if (resetLogoBtn) {
+      resetLogoBtn.addEventListener('click', function() {
+        if (confirm('هل تريد إعادة تعيين الشعار إلى الوضع الافتراضي؟')) {
+          saveLogo(DEFAULT_LOGO);
+          renderLogo();
+          alert('تم إعادة تعيين الشعار');
+        }
+      });
+    }
+
+    // إغلاق المودال
+    if (closeAdmin) {
+      closeAdmin.addEventListener('click', () => {
+        if (modal) modal.classList.remove('open');
+        resetEditMode();
+      });
+    }
+
+    // إغلاق المودال عند الضغط خارجها
+    if (modal) {
+      modal.addEventListener('click', (ev) => {
+        if (ev.target === modal) {
+          modal.classList.remove('open');
+          resetEditMode();
+        }
+      });
+    }
+
+    // إعادة تعيين وضع التعديل
+    function resetEditMode() {
+      editMode = false;
+      currentEditIndex = -1;
+      currentImageData = DEFAULT_IMAGE;
+      if (addBtn) addBtn.textContent = 'إضافة المنتج';
+      if (cancelEditBtn) cancelEditBtn.style.display = 'none';
+      
+      // إعادة تعيين الحقول
+      if ($('#pName')) $('#pName').value = '';
+      if ($('#pPrice')) $('#pPrice').value = '';
+      if ($('#pSizes')) $('#pSizes').value = '';
+      if ($('#pColors')) $('#pColors').value = '';
+      if (imageInput) imageInput.value = '';
+      if (imagePreview) imagePreview.style.display = 'none';
+    }
+
+    // عرض قائمة المنتجات في لوحة الإدارة
+    function renderAdminList() {
+      if (!productsList) return;
+      
+      const list = loadProducts();
+      
+      if(list.length === 0) {
+        productsList.innerHTML = '<div class="hint" style="text-align:center;padding:20px">لا توجد منتجات محفوظة<br><small>استخدم نموذج الإضافة أعلاه</small></div>';
+        return;
+      }
+
+      productsList.innerHTML = '';
+      list.forEach((p, idx) => {
+        const el = document.createElement('div');
+        el.className = 'product-item';
+        el.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+            <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
+              <img src="${p.img}" alt="${p.name}" style="width:50px;height:50px;object-fit:cover;border-radius:6px;flex-shrink:0" onerror="this.src='${DEFAULT_IMAGE}'">
+              <div style="min-width:0;flex:1">
+                <div style="font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</div>
+                <div class="small" style="font-size:11px">${p.price} ج.م — ${p.sizes.join(', ')} — ${p.colors.join(', ')}</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;flex-shrink:0">
+              <button class="btn btn-outline" onclick="startEditProduct(${idx})" style="padding:6px 10px;font-size:12px;min-height:32px">تعديل</button>
+              <button class="btn" style="background:#b22222;color:#fff;border-radius:6px;padding:6px 10px;font-size:12px;min-height:32px;border:none" onclick="deleteProduct(${idx})">حذف</button>
+            </div>
+          </div>
+        `;
+        productsList.appendChild(el);
+      });
+    }
+
+    // بدء تعديل منتج
+    window.startEditProduct = function(i) {
+      const arr = loadProducts();
+      const p = arr[i];
+      
+      // تعبئة الحقول بقيم المنتج
+      if ($('#pName')) $('#pName').value = p.name;
+      if ($('#pPrice')) $('#pPrice').value = p.price;
+      if ($('#pSizes')) $('#pSizes').value = p.sizes.join(',');
+      if ($('#pColors')) $('#pColors').value = p.colors.join(',');
+      
+      // عرض الصورة الحالية
+      if (p.img && p.img !== DEFAULT_IMAGE) {
+        if (imagePreview) {
+          imagePreview.src = p.img;
+          imagePreview.style.display = 'block';
+        }
+        currentImageData = p.img;
+      } else {
+        if (imagePreview) imagePreview.style.display = 'none';
+        currentImageData = DEFAULT_IMAGE;
+      }
+      
+      // تفعيل وضع التعديل
+      editMode = true;
+      currentEditIndex = i;
+      if (addBtn) addBtn.textContent = 'تحديث المنتج';
+      if (cancelEditBtn) cancelEditBtn.style.display = 'inline-block';
+      
+      // إضافة فئة للتمييز البصري
+      const productItems = $$('.product-item');
+      productItems.forEach(item => item.classList.remove('edit-mode'));
+      if (productItems[i]) {
+        productItems[i].classList.add('edit-mode');
+      }
+      
+      // التمرير إلى الحقل الأول
+      if ($('#pName')) $('#pName').focus();
+    };
+
+    // حذف منتج
+    window.deleteProduct = function(i) {
+      if(!confirm('متأكد من حذف المنتج؟')) return;
+      
+      const arr = loadProducts();
+      arr.splice(i, 1);
+      if (saveProducts(arr)) {
+        renderGrid();
+        renderAdminList();
+        alert('تم حذف المنتج بنجاح');
+      }
+      
+      // إذا كان المنتج المحذوف هو الذي يتم تعديله، أعد تعيين وضع التعديل
+      if(editMode && currentEditIndex === i) {
+        resetEditMode();
+      }
+    };
+
+    // إضافة/تحديث منتج - نسخة محسنة
+    if (addBtn) {
+      addBtn.addEventListener('click', () => {
+        const name = $('#pName') ? $('#pName').value.trim() : '';
+        const price = $('#pPrice') ? $('#pPrice').value.trim() : '';
+        const sizes = $('#pSizes') ? $('#pSizes').value.split(',').map(s => s.trim()).filter(Boolean) : [];
+        const colors = $('#pColors') ? $('#pColors').value.split(',').map(s => s.trim()).filter(Boolean) : [];
+        
+        // التحقق من صحة البيانات
+        if(!name) {
+          alert('يرجى إدخال اسم المنتج');
+          return;
+        }
+        
+        if(!price || isNaN(price) || Number(price) <= 0) {
+          alert('يرجى إدخال سعر صحيح للمنتج');
+          return;
+        }
+        
+        const arr = loadProducts();
+        const productData = { 
+          name, 
+          price: String(price), 
+          img: currentImageData, 
+          sizes, 
+          colors 
+        };
+        
+        if(editMode) {
+          // تحديث المنتج الموجود
+          arr[currentEditIndex] = productData;
+          if (saveProducts(arr)) {
+            renderGrid();
+            renderAdminList();
+            resetEditMode();
+            alert('تم تحديث المنتج بنجاح ✓');
+          }
+        } else {
+          // إضافة منتج جديد
+          arr.unshift(productData);
+          if (saveProducts(arr)) {
+            renderGrid();
+            renderAdminList();
+            resetEditMode();
+            alert('تم إضافة المنتج بنجاح ✓');
+          }
+        }
+      });
+    }
+
+    // إلغاء التعديل
+    if (cancelEditBtn) {
+      cancelEditBtn.addEventListener('click', resetEditMode);
+    }
+
+    // تصدير المنتجات
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        const data = loadProducts();
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'zarzor_products.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    // استيراد المنتجات
+    if (importFile) {
+      importFile.addEventListener('change', e => {
+        const f = e.target.files[0];
+        if(!f) return;
+        
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const arr = JSON.parse(reader.result);
+            if(!Array.isArray(arr)) throw new Error('invalid');
+            
+            // التحقق من صحة هيكل البيانات
+            const isValid = arr.every(item => 
+              item && 
+              item.name && 
+              item.price && 
+              Array.isArray(item.sizes) && 
+              Array.isArray(item.colors)
+            );
+            
+            if(!isValid) throw new Error('invalid structure');
+            
+            if (saveProducts(arr)) {
+              renderGrid();
+              renderAdminList();
+              alert('تم استيراد المنتجات بنجاح ✓');
+            }
+          } catch(err) {
+            alert('ملف JSON غير صحيح أو به مشاكل في هيكل البيانات');
+            console.error(err);
+          }
+          
+          // إعادة تعيين حقل الملف
+          e.target.value = '';
+        };
+        reader.readAsText(f);
+      });
+    }
+
+    // مسح جميع المنتجات
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if(!confirm('متأكد من مسح كل المنتجات؟ لا يمكن التراجع عن هذا الإجراء.')) return;
+        
+        localStorage.removeItem(STORAGE_KEY);
+        renderGrid();
+        renderAdminList();
+        resetEditMode();
+        alert('تم مسح جميع المنتجات');
+      });
+    }
+
+    // عرض المنتجات
+    if (showProductsBtn) {
+      showProductsBtn.addEventListener('click', renderAdminList);
+    }
+
+    // تهيئة البيانات الافتراضية إذا لم تكن موجودة
+    function initializeData() {
+      if(loadProducts().length === 0) {
+        const demoProducts = [
+          {
+            name: 'تيشيرت ZARZOR - أسود',
+            price: '450',
+            img: DEFAULT_IMAGE,
+            sizes: ['S', 'M', 'L', 'XL'],
+            colors: ['أسود']
+          },
+          {
+            name: 'هودي ZARZOR - رمادي',
+            price: '900',
+            img: DEFAULT_IMAGE,
+            sizes: ['M', 'L', 'XL'],
+            colors: ['رمادي']
+          },
+        ];
+        saveProducts(demoProducts);
+      }
+    }
+
+    // تهيئة التطبيق
+    function init() {
+      initializeData();
+      renderLogo();
+      renderGrid();
+      console.log('ZARZOR Store loaded successfully on mobile');
+    }
+
+    // تشغيل التطبيق عند تحميل الصفحة
+    document.addEventListener('DOMContentLoaded', init);
+    
+    // تأكيد تحميل السكربت
+    console.log('ZARZOR Store script loaded');
+  </script>
+</body>
+</html>
