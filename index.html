@@ -446,6 +446,7 @@
     }
 
     .hidden-admin {
+      display: none;
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -709,8 +710,8 @@
 
   <script>
     // CONFIG
-    const WHATSAPP_NUMBER = '201151328273'; // تم إصلاح الرقم - يجب أن يبدأ بـ 20 لمصر
-    const ADMIN_PASS = 'zarzor123';
+    const WHATSAPP_NUMBER = '201151328273';
+    const ADMIN_PASS = 'Altmsah3574216890.com';
     const STORAGE_KEY = 'zarzor_products_v1';
     const LOGO_STORAGE_KEY = 'zarzor_logo_v1';
     const DEFAULT_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMTExIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2I4ODYwYiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPtin2YTYqtipINin2YTYp9mGPC90ZXh0Pjwvc3ZnPg==';
@@ -719,6 +720,23 @@
     // helpers
     const $ = s => document.querySelector(s);
     const $$ = s => document.querySelectorAll(s);
+
+    // طريقة الدخول السرية للإدارة
+    document.addEventListener('keydown', function(e) {
+      // Ctrl + Alt + A
+      if (e.ctrlKey && e.altKey && e.key === 'a') {
+        e.preventDefault();
+        const pass = prompt('كلمة المرور للإدارة:');
+        if(pass === ADMIN_PASS) {
+          if (modal) {
+            modal.classList.add('open');
+            renderAdminList();
+          }
+        } else {
+          alert('كلمة المرور غير صحيحة');
+        }
+      }
+    });
 
     // تحسين جودة الصورة - إضافة نسخة عالية الجودة إذا أمكن
     function getHighQualityLogo() {
