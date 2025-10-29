@@ -5,19 +5,5 @@
     "img": "https://i.ibb.co/60TgY658/zarzor-logo.png",
     "sizes": ["S", "M", "L", "XL"],
     "colors": ["أسود", "أبيض"]
-  },
-  {
-    "name": "هودي ZARZOR - رمادي", 
-    "price": "900",
-    "img": "https://i.ibb.co/60TgY658/zarzor-logo.png",
-    "sizes": ["M", "L", "XL"],
-    "colors": ["رمادي", "أسود"]
-  },
-  {
-    "name": "جاكيت ZARZOR - جينز",
-    "price": "1200",
-    "img": "https://i.ibb.co/60TgY658/zarzor-logo.png", 
-    "sizes": ["L", "XL", "XXL"],
-    "colors": ["أزرق", "أسود"]
   }
 ]
