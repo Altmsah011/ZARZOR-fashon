@@ -541,7 +541,6 @@
   <div class="container">
     <header>
       <div class="brand">
-        <!-- اللوجو الجديد في الأعلى -->
         <img src="https://i.ibb.co/60TgY658/zarzor-logo.png" alt="ZARZOR Logo" id="logoImg">
         <div>
           <div class="small">أزياء رجالية • ستايل عصري</div>
@@ -565,7 +564,6 @@
           </div>
         </div>
         <div class="hero-img">
-          <!-- نفس اللوجو لكن بحجم أكبر -->
           <img src="https://i.ibb.co/60TgY658/zarzor-logo.png" alt="ZARZOR Logo" id="heroImg">
         </div>
       </section>
@@ -576,7 +574,7 @@
       </div>
 
       <div id="productsGrid" class="grid">
-        <!-- منتجات هتتحط هنا ديناميكيًا -->
+        <!-- المنتجات هتظهر هنا تلقائياً -->
       </div>
 
       <section id="about" style="margin-top:25px">
@@ -600,98 +598,23 @@
 
       <footer>
         <div>© ZARZOR — جميع الحقوق محفوظة</div>
+        <div style="margin-top: 10px;">
+          <button id="refreshProducts" style="background: var(--gold); color: black; padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer;">
+            🔄 تحديث القائمة
+          </button>
+        </div>
       </footer>
     </main>
   </div>
 
-  <!-- زر Admin مخفي في الزاوية -->
   <div class="hidden-admin" id="hiddenAdminBtn">⚙️</div>
-
-  <!-- ADMIN MODAL -->
-  <div class="modal" id="adminModal">
-    <div class="panel">
-      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:10px">
-        <strong style="text-align:center">لوحة إدارة المتجر — ZARZOR</strong>
-        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center">
-          <span class="chip" id="exportBtn">حفظ البيانات</span>
-          <label class="chip" style="cursor:pointer">استيراد بيانات 
-            <input type="file" id="importFile" accept=".json" style="display:none">
-          </label>
-          <span class="chip" id="clearBtn">مسح الكل</span>
-          <button class="btn btn-outline" id="closeAdmin" style="min-height:36px;padding:8px 12px;">إغلاق</button>
-        </div>
-      </div>
-
-      <div id="adminArea">
-        <!-- قسم إدارة اللوجو -->
-        <div class="logo-section">
-          <div class="hint">إدارة شعار الموقع</div>
-          <div style="margin-top:10px">
-            <div class="field">
-              <label>شعار الموقع (اختر من جهازك)</label>
-              <div class="file-input-wrapper">
-                <input type="file" id="logoUpload" accept="image/*">
-              </div>
-              <img id="logoPreview" class="logo-preview" alt="معاينة الشعار">
-            </div>
-            <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
-              <button class="btn btn-primary" id="saveLogo" style="flex:1;min-height:40px;">حفظ الشعار</button>
-              <button class="btn btn-outline" id="resetLogo" style="flex:1;min-height:40px;">استعادة الافتراضي</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="hint" style="text-align:center;margin:10px 0;">إضافة منتج جديد — سيتم الحفظ تلقائياً</div>
-
-        <div style="margin-top:10px">
-          <div class="field">
-            <label>اسم المنتج</label>
-            <input type="text" id="pName" placeholder="مثال: تيشيرت ZARZOR - أسود">
-          </div>
-          <div class="field">
-            <label>السعر (ج.م)</label>
-            <input type="text" id="pPrice" placeholder="مثال: 450">
-          </div>
-          <div class="field">
-            <label>صورة المنتج</label>
-            <div class="file-input-wrapper">
-              <input type="file" id="pImg" accept="image/*">
-            </div>
-            <img id="imagePreview" class="image-preview" alt="معاينة الصورة">
-          </div>
-          <div class="field">
-            <label>المقاسات المتاحة</label>
-            <input type="text" id="pSizes" placeholder="مثال: S,M,L,XL">
-          </div>
-          <div class="field">
-            <label>الألوان المتاحة</label>
-            <input type="text" id="pColors" placeholder="مثال: أسود, رمادي, أبيض">
-          </div>
-
-          <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
-            <button class="btn btn-primary" id="addProduct" style="flex:2;">إضافة المنتج</button>
-            <button class="btn btn-outline" id="cancelEdit" style="display:none;flex:1;">إلغاء التعديل</button>
-            <button class="btn btn-outline" id="showProducts" style="flex:1;">عرض المنتجات</button>
-          </div>
-        </div>
-
-        <hr style="margin:15px 0;border-color:#222">
-
-        <div id="productsList"></div>
-      </div>
-
-      <div style="margin-top:10px;color:#9a9a9a;font-size:12px;text-align:center">لإغلاق النافذة: اضغط إغلاق أو خارج النافذة</div>
-    </div>
-  </div>
 
   <script>
     // CONFIG
     const WHATSAPP_NUMBER = '201151328273';
     const ADMIN_PASS = 'Altmsah3574216890.com';
-    const STORAGE_KEY = 'zarzor_products_v1';
-    const LOGO_STORAGE_KEY = 'zarzor_logo_v1';
+    const PRODUCTS_JSON_URL = 'https://raw.githubusercontent.com/Altmsah011/ZARZOR/main/products.json';
     const DEFAULT_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMTExIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2I4ODYwYiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPtin2YTYqtipINin2YTYp9mGPC90ZXh0Pjwvc3ZnPg==';
-    const DEFAULT_LOGO = 'https://i.ibb.co/60TgY658/zarzor-logo.png';
 
     // helpers
     const $ = s => document.querySelector(s);
@@ -699,129 +622,43 @@
 
     // طريقة الدخول السرية للإدارة
     document.addEventListener('keydown', function(e) {
-      // Ctrl + Alt + A
       if (e.ctrlKey && e.altKey && e.key === 'a') {
         e.preventDefault();
         const pass = prompt('كلمة المرور للإدارة:');
         if(pass === ADMIN_PASS) {
-          if (modal) {
-            modal.classList.add('open');
-            renderAdminList();
-          }
+          alert('النظام الجديد لا يدعم الإدارة من الموقع. يرجى تعديل ملف products.json مباشرة على GitHub');
         } else {
           alert('كلمة المرور غير صحيحة');
         }
       }
     });
 
-    // تحسين جودة الصورة - إضافة نسخة عالية الجودة إذا أمكن
-    function getHighQualityLogo() {
-      return 'https://i.ibb.co/60TgY658/zarzor-logo.png';
-    }
-
-    // set wa link - تم إصلاح الرابط
-    const waLink = $('#waLink');
-    if (waLink) {
-      waLink.href = `https://wa.me/${WHATSAPP_NUMBER}`;
-    }
-
-    // إدارة اللوجو - نسخة محسنة
-    function loadLogo() {
+    // تحميل المنتجات من GitHub
+    async function loadProducts() {
       try {
-        const savedLogo = localStorage.getItem(LOGO_STORAGE_KEY);
-        if (savedLogo && (savedLogo.startsWith('data:image') || savedLogo.startsWith('http'))) {
-          return savedLogo;
-        }
-        return getHighQualityLogo();
-      } catch(e) {
-        console.error('Error loading logo:', e);
-        return getHighQualityLogo();
-      }
-    }
-
-    function saveLogo(logoData) {
-      try {
-        if (logoData && (logoData.startsWith('data:image') || logoData.startsWith('http'))) {
-          localStorage.setItem(LOGO_STORAGE_KEY, logoData);
-          return true;
-        }
-        return false;
-      } catch(e) {
-        console.error('Error saving logo:', e);
-        alert('حدث خطأ في حفظ الشعار. جرب صورة أصغر.');
-        return false;
-      }
-    }
-
-    function renderLogo() {
-      const logoImg = $('#logoImg');
-      const heroLogo = $('#heroImg');
-      const logoData = loadLogo();
-      
-      if (logoImg) {
-        logoImg.src = logoData;
-        logoImg.onerror = function() {
-          this.src = getHighQualityLogo();
-        };
-      }
-      
-      if (heroLogo) {
-        heroLogo.src = logoData;
-        heroLogo.onerror = function() {
-          this.src = getHighQualityLogo();
-        };
-      }
-    }
-
-    // products management - نسخة محسنة
-    function loadProducts() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
-          const products = JSON.parse(raw);
-          if (Array.isArray(products)) {
-            return products.map(p => ({
-              name: p.name || 'منتج بدون اسم',
-              price: p.price || '0',
-              img: p.img || DEFAULT_IMAGE,
-              sizes: Array.isArray(p.sizes) ? p.sizes : [],
-              colors: Array.isArray(p.colors) ? p.colors : []
-            }));
-          }
-        }
-        return [];
-      } catch(e) {
-        console.error('Error loading products:', e);
-        return [];
-      }
-    }
-
-    function saveProducts(arr) {
-      try {
-        const validProducts = arr.filter(p => 
-          p && 
-          typeof p.name === 'string' && 
-          typeof p.price === 'string' &&
-          Array.isArray(p.sizes) &&
-          Array.isArray(p.colors)
-        );
+        console.log('جاري تحميل المنتجات من GitHub...');
+        const response = await fetch(PRODUCTS_JSON_URL + '?t=' + Date.now());
         
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(validProducts));
-        console.log('تم حفظ المنتجات بنجاح:', validProducts.length, 'منتج');
-        return true;
-      } catch(e) {
-        console.error('Error saving products:', e);
-        alert('حدث خطأ في حفظ المنتجات. جرب مرة أخرى.');
-        return false;
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        
+        const products = await response.json();
+        console.log('تم تحميل المنتجات بنجاح:', products.length, 'منتج');
+        return products;
+      } catch (error) {
+        console.error('خطأ في تحميل المنتجات:', error);
+        return [];
       }
     }
 
-    function renderGrid() {
+    // عرض المنتجات
+    async function renderGrid() {
       const grid = $('#productsGrid');
-      const list = loadProducts();
+      const list = await loadProducts();
       
       if(list.length === 0) {
-        grid.innerHTML = '<div style="color:#bdbdbd;padding:20px;background:#0f0f0f;border-radius:10px;text-align:center;margin:10px 0">لا توجد منتجات حالياً<br><small style="font-size:12px">اضغط على زر الإدارة في الأسفل لإضافة منتجات</small></div>';
+        grid.innerHTML = '<div style="color:#bdbdbd;padding:20px;background:#0f0f0f;border-radius:10px;text-align:center;margin:10px 0">جاري تحميل المنتجات...<br><small style="font-size:12px">إذا استمرت المشكلة، جرب تحديث الصفحة</small></div>';
         return;
       }
 
@@ -835,12 +672,12 @@
         
         div.innerHTML = `
           <div class="img">
-            <img src="${p.img}" alt="${p.name}" onerror="this.src='${DEFAULT_IMAGE}'">
+            <img src="${p.img || DEFAULT_IMAGE}" alt="${p.name}" onerror="this.src='${DEFAULT_IMAGE}'">
           </div>
           <div class="info">
             <h3>${p.name}</h3>
             <div class="price">${p.price} ج.م</div>
-            <div class="meta">المقاسات: ${p.sizes.join(', ') || 'غير محدد'} • الألوان: ${p.colors.join(', ') || 'غير محدد'}</div>
+            <div class="meta">المقاسات: ${(p.sizes || []).join(', ') || 'غير محدد'} • الألوان: ${(p.colors || []).join(', ') || 'غير محدد'}</div>
             <div class="row-actions">
               <a class="btn btn-primary" href="${whatsappUrl}" target="_blank">اطلب الآن</a>
             </div>
@@ -851,412 +688,34 @@
       });
     }
 
-    // admin modal logic
-    const modal = $('#adminModal');
-    const closeAdmin = $('#closeAdmin');
-    const addBtn = $('#addProduct');
-    const cancelEditBtn = $('#cancelEdit');
-    const productsList = $('#productsList');
-    const exportBtn = $('#exportBtn');
-    const importFile = $('#importFile');
-    const clearBtn = $('#clearBtn');
-    const showProductsBtn = $('#showProducts');
-    const imageInput = $('#pImg');
-    const imagePreview = $('#imagePreview');
-    const logoUpload = $('#logoUpload');
-    const logoPreview = $('#logoPreview');
-    const saveLogoBtn = $('#saveLogo');
-    const resetLogoBtn = $('#resetLogo');
+    // زر تحديث المنتجات
+    $('#refreshProducts').addEventListener('click', async function() {
+      this.textContent = 'جاري التحديث...';
+      await renderGrid();
+      this.textContent = '🔄 تحديث القائمة';
+      alert('تم تحديث القائمة بنجاح!');
+    });
 
-    // متغيرات لتتبع حالة التعديل
-    let editMode = false;
-    let currentEditIndex = -1;
-    let currentImageData = DEFAULT_IMAGE;
-    let currentLogoData = '';
+    // تحديث تلقائي كل دقيقة
+    setInterval(async () => {
+      console.log('تحديث تلقائي للمنتجات...');
+      await renderGrid();
+    }, 60000);
 
-    function handleAdminClick(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      const pass = prompt('كلمة المرور للإدارة:');
-      if(pass !== ADMIN_PASS) {
-        alert('كلمة المرور غير صحيحة');
-        return;
-      }
-      if (modal) {
-        modal.classList.add('open');
-        renderAdminList();
-      }
-    }
-
-    // معاينة الصورة عند اختيارها - نسخة محسنة
-    if (imageInput) {
-      imageInput.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-          if (file.size > 2 * 1024 * 1024) {
-            alert('حجم الصورة كبير جداً. يرجى اختيار صورة أقل من 2MB');
-            return;
-          }
-          
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            imagePreview.src = e.target.result;
-            imagePreview.style.display = 'block';
-            currentImageData = e.target.result;
-          };
-          reader.onerror = function() {
-            alert('خطأ في تحميل الصورة. جرب صورة أخرى.');
-          };
-          reader.readAsDataURL(file);
-        }
-      });
-    }
-
-    // معاينة اللوجو عند اختياره - نسخة محسنة
-    if (logoUpload) {
-      logoUpload.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-          if (file.size > 1 * 1024 * 1024) {
-            alert('حجم الشعار كبير جداً. يرجى اختيار صورة أقل من 1MB');
-            return;
-          }
-          
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            logoPreview.src = e.target.result;
-            logoPreview.style.display = 'block';
-            currentLogoData = e.target.result;
-          };
-          reader.onerror = function() {
-            alert('خطأ في تحميل الشعار. جرب صورة أخرى.');
-          };
-          reader.readAsDataURL(file);
-        }
-      });
-    }
-
-    // حفظ اللوجو - نسخة محسنة
-    if (saveLogoBtn) {
-      saveLogoBtn.addEventListener('click', function() {
-        if (currentLogoData) {
-          if (saveLogo(currentLogoData)) {
-            renderLogo();
-            alert('تم حفظ الشعار بنجاح ✓');
-            logoPreview.style.display = 'none';
-            logoUpload.value = '';
-            currentLogoData = '';
-          }
-        } else {
-          alert('يرجى اختيار شعار أولاً');
-        }
-      });
-    }
-
-    // إعادة تعيين اللوجو
-    if (resetLogoBtn) {
-      resetLogoBtn.addEventListener('click', function() {
-        if (confirm('هل تريد إعادة تعيين الشعار إلى الوضع الافتراضي؟')) {
-          saveLogo(DEFAULT_LOGO);
-          renderLogo();
-          alert('تم إعادة تعيين الشعار');
-        }
-      });
-    }
-
-    // إغلاق المودال
-    if (closeAdmin) {
-      closeAdmin.addEventListener('click', () => {
-        if (modal) modal.classList.remove('open');
-        resetEditMode();
-      });
-    }
-
-    // إغلاق المودال عند الضغط خارجها
-    if (modal) {
-      modal.addEventListener('click', (ev) => {
-        if (ev.target === modal) {
-          modal.classList.remove('open');
-          resetEditMode();
-        }
-      });
-    }
-
-    // إعادة تعيين وضع التعديل
-    function resetEditMode() {
-      editMode = false;
-      currentEditIndex = -1;
-      currentImageData = DEFAULT_IMAGE;
-      if (addBtn) addBtn.textContent = 'إضافة المنتج';
-      if (cancelEditBtn) cancelEditBtn.style.display = 'none';
-      
-      // إعادة تعيين الحقول
-      if ($('#pName')) $('#pName').value = '';
-      if ($('#pPrice')) $('#pPrice').value = '';
-      if ($('#pSizes')) $('#pSizes').value = '';
-      if ($('#pColors')) $('#pColors').value = '';
-      if (imageInput) imageInput.value = '';
-      if (imagePreview) imagePreview.style.display = 'none';
-    }
-
-    // عرض قائمة المنتجات في لوحة الإدارة
-    function renderAdminList() {
-      if (!productsList) return;
-      
-      const list = loadProducts();
-      
-      if(list.length === 0) {
-        productsList.innerHTML = '<div class="hint" style="text-align:center;padding:20px">لا توجد منتجات محفوظة<br><small>استخدم نموذج الإضافة أعلاه</small></div>';
-        return;
-      }
-
-      productsList.innerHTML = '';
-      list.forEach((p, idx) => {
-        const el = document.createElement('div');
-        el.className = 'product-item';
-        el.innerHTML = `
-          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-            <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
-              <img src="${p.img}" alt="${p.name}" style="width:50px;height:50px;object-fit:cover;border-radius:6px;flex-shrink:0" onerror="this.src='${DEFAULT_IMAGE}'">
-              <div style="min-width:0;flex:1">
-                <div style="font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</div>
-                <div class="small" style="font-size:11px">${p.price} ج.م — ${p.sizes.join(', ')} — ${p.colors.join(', ')}</div>
-              </div>
-            </div>
-            <div style="display:flex;gap:6px;flex-shrink:0">
-              <button class="btn btn-outline" onclick="startEditProduct(${idx})" style="padding:6px 10px;font-size:12px;min-height:32px">تعديل</button>
-              <button class="btn" style="background:#b22222;color:#fff;border-radius:6px;padding:6px 10px;font-size:12px;min-height:32px;border:none" onclick="deleteProduct(${idx})">حذف</button>
-            </div>
-          </div>
-        `;
-        productsList.appendChild(el);
-      });
-    }
-
-    // بدء تعديل منتج
-    window.startEditProduct = function(i) {
-      const arr = loadProducts();
-      const p = arr[i];
-      
-      // تعبئة الحقول بقيم المنتج
-      if ($('#pName')) $('#pName').value = p.name;
-      if ($('#pPrice')) $('#pPrice').value = p.price;
-      if ($('#pSizes')) $('#pSizes').value = p.sizes.join(',');
-      if ($('#pColors')) $('#pColors').value = p.colors.join(',');
-      
-      // عرض الصورة الحالية
-      if (p.img && p.img !== DEFAULT_IMAGE) {
-        if (imagePreview) {
-          imagePreview.src = p.img;
-          imagePreview.style.display = 'block';
-        }
-        currentImageData = p.img;
-      } else {
-        if (imagePreview) imagePreview.style.display = 'none';
-        currentImageData = DEFAULT_IMAGE;
-      }
-      
-      // تفعيل وضع التعديل
-      editMode = true;
-      currentEditIndex = i;
-      if (addBtn) addBtn.textContent = 'تحديث المنتج';
-      if (cancelEditBtn) cancelEditBtn.style.display = 'inline-block';
-      
-      // إضافة فئة للتمييز البصري
-      const productItems = $$('.product-item');
-      productItems.forEach(item => item.classList.remove('edit-mode'));
-      if (productItems[i]) {
-        productItems[i].classList.add('edit-mode');
-      }
-      
-      // التمرير إلى الحقل الأول
-      if ($('#pName')) $('#pName').focus();
-    };
-
-    // حذف منتج
-    window.deleteProduct = function(i) {
-      if(!confirm('متأكد من حذف المنتج؟')) return;
-      
-      const arr = loadProducts();
-      arr.splice(i, 1);
-      if (saveProducts(arr)) {
-        renderGrid();
-        renderAdminList();
-        alert('تم حذف المنتج بنجاح');
-      }
-      
-      // إذا كان المنتج المحذوف هو الذي يتم تعديله، أعد تعيين وضع التعديل
-      if(editMode && currentEditIndex === i) {
-        resetEditMode();
-      }
-    };
-
-    // إضافة/تحديث منتج - نسخة محسنة
-    if (addBtn) {
-      addBtn.addEventListener('click', () => {
-        const name = $('#pName') ? $('#pName').value.trim() : '';
-        const price = $('#pPrice') ? $('#pPrice').value.trim() : '';
-        const sizes = $('#pSizes') ? $('#pSizes').value.split(',').map(s => s.trim()).filter(Boolean) : [];
-        const colors = $('#pColors') ? $('#pColors').value.split(',').map(s => s.trim()).filter(Boolean) : [];
-        
-        // التحقق من صحة البيانات
-        if(!name) {
-          alert('يرجى إدخال اسم المنتج');
-          return;
-        }
-        
-        if(!price || isNaN(price) || Number(price) <= 0) {
-          alert('يرجى إدخال سعر صحيح للمنتج');
-          return;
-        }
-        
-        const arr = loadProducts();
-        const productData = { 
-          name, 
-          price: String(price), 
-          img: currentImageData, 
-          sizes, 
-          colors 
-        };
-        
-        if(editMode) {
-          // تحديث المنتج الموجود
-          arr[currentEditIndex] = productData;
-          if (saveProducts(arr)) {
-            renderGrid();
-            renderAdminList();
-            resetEditMode();
-            alert('تم تحديث المنتج بنجاح ✓');
-          }
-        } else {
-          // إضافة منتج جديد
-          arr.unshift(productData);
-          if (saveProducts(arr)) {
-            renderGrid();
-            renderAdminList();
-            resetEditMode();
-            alert('تم إضافة المنتج بنجاح ✓');
-          }
-        }
-      });
-    }
-
-    // إلغاء التعديل
-    if (cancelEditBtn) {
-      cancelEditBtn.addEventListener('click', resetEditMode);
-    }
-
-    // تصدير المنتجات
-    if (exportBtn) {
-      exportBtn.addEventListener('click', () => {
-        const data = loadProducts();
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'zarzor_products.json';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      });
-    }
-
-    // استيراد المنتجات
-    if (importFile) {
-      importFile.addEventListener('change', e => {
-        const f = e.target.files[0];
-        if(!f) return;
-        
-        const reader = new FileReader();
-        reader.onload = () => {
-          try {
-            const arr = JSON.parse(reader.result);
-            if(!Array.isArray(arr)) throw new Error('invalid');
-            
-            // التحقق من صحة هيكل البيانات
-            const isValid = arr.every(item => 
-              item && 
-              item.name && 
-              item.price && 
-              Array.isArray(item.sizes) && 
-              Array.isArray(item.colors)
-            );
-            
-            if(!isValid) throw new Error('invalid structure');
-            
-            if (saveProducts(arr)) {
-              renderGrid();
-              renderAdminList();
-              alert('تم استيراد المنتجات بنجاح ✓');
-            }
-          } catch(err) {
-            alert('ملف JSON غير صحيح أو به مشاكل في هيكل البيانات');
-            console.error(err);
-          }
-          
-          // إعادة تعيين حقل الملف
-          e.target.value = '';
-        };
-        reader.readAsText(f);
-      });
-    }
-
-    // مسح جميع المنتجات
-    if (clearBtn) {
-      clearBtn.addEventListener('click', () => {
-        if(!confirm('متأكد من مسح كل المنتجات؟ لا يمكن التراجع عن هذا الإجراء.')) return;
-        
-        localStorage.removeItem(STORAGE_KEY);
-        renderGrid();
-        renderAdminList();
-        resetEditMode();
-        alert('تم مسح جميع المنتجات');
-      });
-    }
-
-    // عرض المنتجات
-    if (showProductsBtn) {
-      showProductsBtn.addEventListener('click', renderAdminList);
-    }
-
-    // تهيئة البيانات الافتراضية إذا لم تكن موجودة
-    function initializeData() {
-      if(loadProducts().length === 0) {
-        const demoProducts = [
-          {
-            name: 'تيشيرت ZARZOR - أسود',
-            price: '450',
-            img: DEFAULT_IMAGE,
-            sizes: ['S', 'M', 'L', 'XL'],
-            colors: ['أسود']
-          },
-          {
-            name: 'هودي ZARZOR - رمادي',
-            price: '900',
-            img: DEFAULT_IMAGE,
-            sizes: ['M', 'L', 'XL'],
-            colors: ['رمادي']
-          },
-        ];
-        saveProducts(demoProducts);
-      }
+    // رابط الواتساب
+    const waLink = $('#waLink');
+    if (waLink) {
+      waLink.href = `https://wa.me/${WHATSAPP_NUMBER}`;
     }
 
     // تهيئة التطبيق
-    function init() {
-      initializeData();
-      renderLogo();
-      renderGrid();
-      console.log('ZARZOR Store loaded successfully on mobile');
+    async function init() {
+      await renderGrid();
+      console.log('ZARZOR Store loaded successfully');
     }
 
     // تشغيل التطبيق عند تحميل الصفحة
     document.addEventListener('DOMContentLoaded', init);
-    
-    // تأكيد تحميل السكربت
-    console.log('ZARZOR Store script loaded');
   </script>
 </body>
 </html>
